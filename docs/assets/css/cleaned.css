@@ -1,0 +1,252 @@
+:root {
+	--main-color: #7e12b5;
+	--intro-color: #4e12b5;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	/*border: 1px solid black;*/
+}
+body {
+	background-color: var(--main-color);
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+}
+nav, h1, h2, h3 {
+	font-family: Asimovian;
+}
+li {
+	list-style-type: none;
+}
+nav {
+	padding: 0px 40px;
+	letter-spacing: 2px;
+}
+nav ul {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	height: 38vh;
+}
+nav ul li{
+	min-width: 235px;
+	text-align: right;
+	padding: 0.75rem 0;
+	border-bottom: 2px solid var(--main-color);
+	font-size: .9rem;
+	font-weight: bold;
+	opacity: 0.7;
+	transition: 200ms ease;
+}
+nav ul li:hover {
+	opacity: 1;
+	border-color: #ae35cc;
+	text-shadow: 4px 3px 6px;
+	transform: translateX(-5px);
+}
+a {
+	text-decoration: none;
+	color: #fff;
+}
+img {
+	max-width: 100%;
+}
+
+h1, h2, h3 {
+	padding: 3vh 0;
+	opacity: 1;
+}
+input {
+	border-radius: 5px;
+	background-color: rgba(255,255,255, 0.6);
+	height: 30px;
+	margin-bottom: 10px;
+}
+p {
+	opacity: 0.7;
+	padding: 10px 25px;
+}
+a.image img {
+	border-radius: 28px;
+	margin-top: 2px;
+}
+i {
+	font-size: 50px;
+}
+
+#wrapper {
+	display: grid;
+	grid-template-areas: 
+	"sidebar intro intro"
+	"sidebar about about"
+	"sidebar skills skills"
+	"sidebar contact contact"
+	"sidebar footer footer";
+}
+#sidebar {
+	position: sticky;
+	top: 0px;
+	background-color: #221295;
+	height: 100vh;
+	padding: 0px;
+	display: flex;
+	align-items: center;
+	grid-area: sidebar;
+}
+#sidebar > .inner{
+	text-align: center;
+}
+#intro {
+	background-color: var(--intro-color);
+	grid-area: intro;
+	margin-top: 10px;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.4em;
+	background-image: url("images/phoenix.png");
+	background-size: 90% auto, cover;
+	background-repeat: no-repeat;
+}
+#intro > .inner {
+	text-align: right;
+	margin-left: 50%;
+	opacity: 1;
+}
+#about {
+	grid-area: about;
+	background-color: midnightblue;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 10px;
+	padding: 1%;
+	min-height: 60rem;
+}
+#about > section {
+	border: 3px solid var(--intro-color);
+	border-radius: 28px;
+	padding: 5px;
+}
+#skills {
+	grid-area: skills;
+	background-color: #29041D;
+	min-height: 100vh;
+	text-align: center;
+}
+#contact {
+	text-align: center;
+	grid-area: contact;
+	background-color: #5d71bf;
+	min-height: 65vh;
+}
+#contact .inner {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+	padding-left: 5%;
+}
+#email {
+	text-decoration: underline dotted;
+}
+#footer {
+	grid-area: footer;
+	margin: 20px;
+	text-align: right;
+}
+
+.actions {
+	margin: 25px 0;
+	transition: 300ms linear;
+	text-align: center;
+	font-family: Asimovian;
+	font-size: 1.2rem;
+}
+.actions:hover {
+	transform: scale(1.1);
+}
+.button {
+	font-size: 0.8rem;
+	font-weight: bold;
+	padding: 10px 20px;
+	border: 1px solid white;
+	border-radius: 20px;
+	color: white;
+	background-color: rgba(150,150,150, 0.2);
+}
+.button:hover {
+	background-color: rgba(150,150,150, 0.2);
+}
+.inner > h2 {
+	text-align: left;
+	padding-left: 8%;
+	padding-top: 5%;
+}
+.skills-flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+}
+.skill {
+	width: 80px;
+	height: 130px;
+	padding: 20px;
+	background: var(--intro-color);
+	border-radius: 10px;
+	transition: 200ms ease;
+	box-shadow: 0 5px 7px 1px rgba(0,0,0, 0.5);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.skill:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 7px 14px rgba(50,180,180,0.7);
+}
+.skill span {
+	opacity: 0.65;
+}
+
+/* Mobile Query For Sidebar */
+@media (max-width: 800px) {
+    #wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "sidebar"
+            "intro"
+            "about"
+            "skills"
+            "contact"
+            "footer";
+    }
+
+    #sidebar {
+        grid-area: sidebar;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        height: auto;
+        min-height: auto;
+        display: block;
+        padding: 0.5rem 0;
+    }
+
+    nav {
+        padding: 0.5rem;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        height: auto;
+    }
+
+    nav ul li {
+        min-width: 0;
+        width: auto;
+        padding: 0.5rem 0.75rem;
+    }
+}
