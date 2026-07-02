@@ -25,10 +25,10 @@
 			<div class="inner">
 			<nav>
 				<ul>
-					<li><a href="#intro">WELCOME</a></li>
-					<li><a href="#about">WHO I AM</a></li>
-					<li><a href="#skills">SKILLS</a></li>
-					<li><a href="#contact">GET IN TOUCH</a></li>
+					<li data-section="intro"><a href="#intro">WELCOME</a></li>
+					<li data-section="about"><a href="#about">WHO I AM</a></li>
+					<li data-section="skills"><a href="#skills">SKILLS</a></li>
+					<li data-section="contact"><a href="#contact">GET IN TOUCH</a></li>
 				</ul>
 			</nav>
 			</div>
@@ -38,15 +38,15 @@
     <section id="intro" class="">
       <div class="inner">
         <h1>Andrew Kenny</h1>
-        <p>I am</p>
+        <p>I am <span id="typed-text"></span><span class="cursor">|</span></p>
         <ul class="actions">
-          <li><a href="#one" class="button">My Resume</a></li>
+          <li><a href="resume/AndrewKennyResume.docx" download class="button">My Resume</a></li>
         </ul>
       </div>
     </section>
 
     <!-- About -->
-    <section id="about" class="">
+    <section id="about" class="reveal">
 
       <section>
         <a href="#" class="image">
@@ -61,7 +61,7 @@
 				be easily understood by a human is not yet one of those things. I love a challenge, and getting a program to work after a
 				struggle with can be extremely rewarding.</p>
             <ul class="actions">
-              <li><a href="generic.html" class="button">Learn more</a></li>
+              <li><a href="resume/AndrewKennyResume.docx" download class="button">Learn more</a></li>
             </ul>
         </div>
       </section>
@@ -98,7 +98,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="">
+    <section id="skills" class="reveal">
 		
 		<div class="inner">
 		<h2>Skills</h2>
@@ -114,7 +114,7 @@
 		<h2>Other Skills</h2>
 		<div class="skills-flex">
           <div class="skill"><i class="fa-brands fa-microsoft"></i><span>MS Office</span></div>
-		  <div class="skill"><i class="fa-solid fa-display"></i><span>Remote Desktop</span></div>
+		  <div class="skill"><i class="fa-solid fa-network-wired"></i><span>Remote Desktop</span></div>
 		  <div class="skill"><i class="fa-solid fa-code-branch"></i><span>Software Testing and Design</span></div>
 		  <div class="skill"><i class="devicon-csharp-plain"></i><span>C#</span></div>
 		  <div class="skill"><i class="devicon-c-plain"></i><span>C</span></div>
@@ -124,7 +124,7 @@
           <div class="skill"><i class="fa-brands fa-github"></i><span>Github</span></div>
 		  <div class="skill"><i class="devicon-vscode-plain"></i><span>VS Code</span></div>
 		  <div class="skill"><i class="devicon-json-plain"></i><span>JSON</span></div>
-		  <div class="skill"></div>
+		  <div class="skill"><i class="fa-brands fa-docker"></i><span>Docker</span></div>
 		  <div class="skill"></div>
 		  <div class="skill"></div>
 		  <div class="skill"></div>
@@ -137,8 +137,6 @@
     <section id="contact" class="">
 		<h2>Get in touch</h2>
 		<div class="inner">
-
-			
 
 			<section>
 				<form method="post" action="#">
@@ -154,9 +152,9 @@
                   <input type="email" id="email" name="email" />
                 </div>
 
-                <div class="input">
+                <div class="input message-container">
                   <label for="message">Message</label>
-                  <textarea id="message" name="message" rows="5"></textarea>
+                  <textarea id="message" name="message"></textarea>
                 </div>
 
               </div>
@@ -176,14 +174,15 @@
 
 				  <li>
 					<h3>Email</h3>
-					<a href="mailto:andykenny512@gmail.com" id="email">andykenny512@gmail.com</a>
+					<a href="mailto:andykenny512@gmail.com" class="email-link">andykenny512@gmail.com</a>
 				  </li>
 
 				  <li>
 					<h3>Social</h3>
 					<ul class="icons">
-					  <li><a href="#" class="icon fa-github"></a></li>
-					  <li><a href="#" class="icon fa-linkedin-in"></a></li>
+					  <li><a href="https://github.com/RisingPhoenix730"><i class="icon fa-brands fa-github"></i></a></li>
+					  <li><a href="#" class=""><i class="icon fa-brands fa-linkedin-in"></i></a></li>
+					  <li><a href="#" class=""><i class="icon fa-brands fa-itch-io"></i></a></li>
 					</ul>
 				  </li>
 				</ul>
@@ -195,7 +194,6 @@
 	<!-- Footer -->
 	<footer id="footer" class="">
 		<ul class="menu">
-			<li>&copy; Untitled</li>
 			<li>Design: Andrew Kenny</li>
 		</ul>
 	</footer>
