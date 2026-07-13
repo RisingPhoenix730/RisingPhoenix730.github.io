@@ -21,20 +21,20 @@ nav a {
     padding: 0;
     margin: 0;
     width: 100%;
-    height: 100%;
+    max-height: min-content;
     border: none;
     z-index: 1;
     border-bottom: 2px solid;
-    position: fixed;
-    min-width: 290px;
+    position: sticky;
     display: block;
-    background-color: rgba(255,225,225, 30%);
+    background-color: rgba(255,225,225);
 }
 
 body {
   display: block;
   font-family: Arial;
   background-image:url(https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: 100%;
 }
 
 #main-doc {

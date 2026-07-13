@@ -37,63 +37,101 @@ const words = [
 
 const typedText = document.getElementById("typed-text");
 
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
+if (typedText){
+	let wordIndex = 0;
+	let charIndex = 0;
+	let deleting = false;
 
-const typingSpeed = 60;
-const deletingSpeed = 50;
-const pauseAfterTyping = 1200;
-const pauseAfterDeleting = 500;
+	const typingSpeed = 60;
+	const deletingSpeed = 50;
+	const pauseAfterTyping = 1200;
+	const pauseAfterDeleting = 500;
 
-function type() {
-    const currentWord = words[wordIndex];
+	function type() {
+		const currentWord = words[wordIndex];
 
-    if (!deleting) {
-        typedText.textContent = currentWord.substring(0, charIndex++);
-    } else {
-        typedText.textContent = currentWord.substring(0, charIndex--);
-    }
+		if (!deleting) {
+			typedText.textContent = currentWord.substring(0, charIndex++);
+		} else {
+			typedText.textContent = currentWord.substring(0, charIndex--);
+		}
 
-    let timeout = deleting ? deletingSpeed : typingSpeed;
+		let timeout = deleting ? deletingSpeed : typingSpeed;
 
-    if (!deleting && charIndex > currentWord.length) {
-        deleting = true;
-        timeout = pauseAfterTyping;
-    } else if (deleting && charIndex < 0) {
-        deleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        timeout = pauseAfterDeleting;
-    }
+		if (!deleting && charIndex > currentWord.length) {
+			deleting = true;
+			timeout = pauseAfterTyping;
+		} else if (deleting && charIndex < 0) {
+			deleting = false;
+			wordIndex = (wordIndex + 1) % words.length;
+			timeout = pauseAfterDeleting;
+		}
 
-    setTimeout(type, timeout);
+		setTimeout(type, timeout);
+	}
+
+	type();
 }
 
-type();
-
-
 // Navigation observer
-const navItems = document.querySelectorAll("#sidebar li");
+const sidebar = document.getElementById("sidebar");
 
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+if (sidebar){
+	const navItems = document.querySelectorAll("li");
 
-        navItems.forEach(item => item.classList.remove("active"));
+	const navObserver = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) return;
 
-        const activeItem = document.querySelector(
-            `#sidebar li[data-section="${entry.target.id}"]`
-        );
+			navItems.forEach(item => item.classList.remove("active"));
 
-        if (activeItem) {
-            activeItem.classList.add("active");
-        }
-    });
-}, {
-    rootMargin: "-40% 0px -40% 0px",
-    threshold: 0
+			const activeItem = document.querySelector(
+				`#sidebar li[data-section="${entry.target.id}"]`
+			);
+
+			if (activeItem) {
+				activeItem.classList.add("active");
+			}
+		});
+	}, {
+		rootMargin: "-40% 0px -40% 0px",
+		threshold: 0
+	});
+
+	document
+		.querySelectorAll("section[id]")
+		.forEach(section => navObserver.observe(section));
+}
+
+// Navigation outside of index
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll("header nav a").forEach(link => {
+    const href = link.getAttribute("href");
+
+    if (href === currentPage) {
+        link.parentElement.classList.add("active");
+    }
 });
 
-document
-    .querySelectorAll("section[id]")
-    .forEach(section => navObserver.observe(section));
+// Expand/Collapse Project Cards
+document.querySelectorAll(".project-image").forEach(image => {
+    image.addEventListener("click", () => {
+        const card = image.closest(".project-card");
+
+        document.querySelectorAll(".project-card").forEach(other => {
+            if (other !== card) {
+                other.classList.remove("expanded");
+            }
+        });
+
+        card.classList.toggle("expanded");
+    });
+});
+
+// Prevent project links from collapsing the card
+document.querySelectorAll(".project-links a").forEach(link => {
+    link.addEventListener("click", e => {
+        e.stopPropagation();
+    });
+});
