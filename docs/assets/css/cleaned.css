@@ -318,6 +318,7 @@ p {
 .projects {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	gap: 20px;
 }
 .project-content {
     max-height: 0;
